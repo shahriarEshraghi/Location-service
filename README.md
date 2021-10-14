@@ -1,4 +1,4 @@
-# Location Service
+# Location service
 
 ## Project setup
 ```
