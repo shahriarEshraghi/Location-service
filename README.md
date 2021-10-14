@@ -1,4 +1,4 @@
-# achareh
+# Location service
 
 ## Project setup
 ```
