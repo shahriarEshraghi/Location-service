@@ -101,10 +101,7 @@
                 <v-col cols="12" md="12" class="pa-0 mt-sm-5">
                   <div class="d-md-flex justify-space-between">
                     <v-col cols="12" md="4" class="text-right">
-                      <router-link
-                        to="/"
-                        class="text-decoration-none"
-                      >
+                      <router-link to="/" class="text-decoration-none">
                         <v-btn
                           color="primary"
                           depressed
@@ -215,6 +212,8 @@ export default {
             if (response.ok) {
               this.successfulReq = true;
               this.isLoading = false;
+              this.$store.commit("initForm");
+              this.$refs.form.reset();
             }
           })
           .catch(err => {

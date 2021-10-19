@@ -8,11 +8,7 @@ export const  store = new Vuex.Store({
       telNumber:'',
       phoneNumber:'',
       address:'',
-      mapModal: false,
       mapMarker: { position: { lat: 35.70677364044172, lng: 51.44044578075409 } },
       mapCenter: { lat: 35.70677364044172, lng: 51.44044578075409 },
-      mapOptions: {
-        disableDefaultUI: true
-      }
-    },
+    }
   });

@@ -12,7 +12,7 @@
         :center="$store.state.mapCenter"
         :zoom="15"
         map-style-id="roadmap"
-        :options="$store.state.mapOptions"
+        :options="mapOptions"
         style="width: 100%; height: 60vh"
         ref="mapRef"
         @click="handleMapClick"
@@ -38,22 +38,31 @@
 <script>
 export default {
   name: "LocationPickers",
+  data: () => ({
+    mapModal: false,
+    mapOptions: {
+      disableDefaultUI: true
+    }
+  }),
   methods: {
     //detects location from browser
     geolocate() {
       navigator.geolocation.getCurrentPosition(position => {
-       this.$store.state.mapMarker.position = {
+        this.$store.state.mapMarker.position = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
         this.panToMarker();
       });
       console.log(this.$store.state.mapMarker.position);
-      this.$store.state.mapModal = false;
+      this.mapModal = false;
     },
     //sets the position of marker when dragged
     handleMarkerDrag(e) {
-     this.$store.state.mapMarker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+      this.$store.state.mapMarker.position = {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng()
+      };
     },
     //Moves the map view port to marker
     panToMarker() {
@@ -62,7 +71,10 @@ export default {
     },
     //Moves the marker to click position on the map
     handleMapClick(e) {
-      this.$store.state.mapMarker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+      this.$store.state.mapMarker.position = {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng()
+      };
       console.log(e);
     }
   },
